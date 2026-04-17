@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.tsx';
+import Hero from '../components/Hero.tsx';
+import Services from '../components/Services.tsx';
+import Products from '../components/Products.tsx';
+import Features from '../components/Features.tsx';
+import Contact from '../components/Contact.tsx';
+import Footer from '../components/Footer.tsx';
+import Testimonials from '../components/Testimonials.tsx';
+import FAQ from '../components/FAQ.tsx';
+
+---
+
+<Layout title="Fushiguro - Premium Discord Services">
+  <head slot="head">
+    <meta name="description" content="Premium Discord server management, custom bots, and security audits crafted to perfection. Join 500+ thriving communities." />
+    <meta name="keywords" content="Discord Services, Custom Bots, Discord Security, Server Management, Fushiguro" />
+    
+    <!-- OpenGraph / Facebook / Instagram -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fushiguro.services.vercel.app/" />
+    <meta property="og:title" content="Fushiguro - Premium Discord Services & products" />
+    <meta property="og:description" content=" Professional Discord solutions for your community and legit products to use via licence" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Fushiguro - Premium Discord Services" />
+    <meta property="twitter:description" content="Crafting the most premium Discord experiences." />
+  </head>
+
+  <Navbar client:load />
+  <Hero client:load />
+  <Services client:load />
+  <Products client:load />
+  <Testimonials client:load /> 
+  <Features client:load />
+  <FAQ client:load />
+  <Contact client:load />
+  <Footer client:load />
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&family=Satisfy&display=swap');
+  
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  /* Custom Cursor - Simple Gradient Circle */
+  * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="%23ff6b9d" opacity="0.8"/><circle cx="12" cy="12" r="5" fill="%23a78bfa" opacity="0.6"/></svg>') 12 12, auto;
+  }
+
+  /* Interactive Elements Cursor */
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23ff6b9d" opacity="0.9"/><circle cx="12" cy="12" r="6" fill="%23a78bfa" opacity="0.7"/></svg>') 12 12, pointer;
+  }
+
+  /* Enhanced Scroll Reveal Animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px) rotateX(25deg);
+    animation: scrollRevealEnhanced 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    perspective: 1000px;
+  }
+
+  .scroll-reveal:nth-child(1) { animation-delay: 0.05s; }
+  .scroll-reveal:nth-child(2) { animation-delay: 0.15s; }
+  .scroll-reveal:nth-child(3) { animation-delay: 0.25s; }
+  .scroll-reveal:nth-child(4) { animation-delay: 0.35s; }
+  .scroll-reveal:nth-child(5) { animation-delay: 0.45s; }
+  .scroll-reveal:nth-child(6) { animation-delay: 0.55s; }
+
+  @keyframes scrollRevealEnhanced {
+    0% {
+      opacity: 0;
+      transform: translateY(60px) rotateX(25deg) scale(0.85);
+      filter: blur(10px);
+    }
+    40% {
+      transform: translateY(-8px) rotateX(-5deg) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0) scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  /* Intersection Observer Scroll Animation */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .scroll-fade-in.visible {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth Page Transitions */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Parallax Effect */
+  .parallax {
+    position: relative;
+  }
+
+  /* Gradient Text Animation */
+  .gradient-text {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Hover Glow Effect */
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.4), 0 0 60px rgba(167, 139, 250, 0.2);
+  }
+
+  /* Smooth Transitions */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+
+  /* Text Selection Color */
+  ::selection {
+    background-color: rgba(255, 107, 157, 0.3);
+    color: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 107, 157, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b9d, #a78bfa);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff1493, #8b5cf6);
+  }
+</style>
+
+<!-- SEO & Performance Scripts -->
+<script>
+  // Intersection Observer for enhanced scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Parallax effect for scroll reveal elements
+        const rect = entry.target.getBoundingClientRect();
+        const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+        const target = entry.target as HTMLElement;
+        if (scrollPercent > 0 && scrollPercent < 1 && target.style) {
+          target.style.transform = `translateY(${scrollPercent * 20}px)`;
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Apply observer to all scroll-reveal and scroll-fade-in elements
+  document.querySelectorAll('.scroll-reveal, .scroll-fade-in, section').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Lazy load images for better performance
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          img.src = img.dataset.src || img.src;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+
+  // Track user interactions for analytics
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A' || target.tagName === 'BUTTON') {
+      // Analytics tracking placeholder
+      console.log('User interacted with:', target.textContent);
+    }
+  });
+</script>
+
+<!-- Google Analytics Placeholder (Add your GA ID here) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+<script>
+  // Uncomment and add your Google Analytics ID
+  // window.dataLayer = window.dataLayer || [];
+  // function gtag(){dataLayer.push(arguments);}
+  // gtag('js', new Date());
+  // gtag('config', 'YOUR_GA_ID');
+</script>

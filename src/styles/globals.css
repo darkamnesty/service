@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Poppins';
+    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 rounded-full bg-gradient-main text-white font-bold text-lg shadow-md-soft hover:shadow-lg-soft hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full bg-white border-2 border-primary text-primary font-bold text-lg shadow-sm-soft hover:bg-pink-50 hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .card-base {
+    @apply p-8 rounded-2xl bg-white border border-pink-100 shadow-sm-soft transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg-soft hover:-translate-y-2;
+  }
+}

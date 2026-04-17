@@ -1,0 +1,98 @@
+# Fushiguro .htaccess - SEO & Performance Optimization
+# For Apache web servers
+
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 10 days"
+  ExpiresByType text/html "access plus 1 day"
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+</IfModule>
+
+# Enable HTTP/2 Push
+<IfModule mod_http2.c>
+  H2Direct on
+</IfModule>
+
+# Redirect HTTP to HTTPS
+<IfModule mod_ssl.c>
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+</IfModule>
+
+# Remove trailing slashes
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
+</IfModule>
+
+# Remove www prefix
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # Prevent MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Enable XSS protection
+  Header always set X-XSS-Protection "1; mode=block"
+  
+  # Referrer policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Permissions policy
+  Header always set Permissions-Policy "accelerometer=(), camera=(), microphone=(), geolocation=(), payment=()"
+</IfModule>
+
+# Charset
+AddDefaultCharset UTF-8
+
+# Cache busting for assets (if filename contains hash)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.+)\.(\w+)\.(css|js)$ $1.$3 [L]
+</IfModule>
+
+# Block access to sensitive files
+<Files ~ "\.env$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files ~ "package.json$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files ~ "\.git">
+  Order allow,deny
+  Deny from all
+</Files>
