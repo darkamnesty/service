@@ -14,20 +14,6 @@ import FAQ from '../components/FAQ.tsx';
 
 <Layout title="Fushiguro - Premium Discord Services">
   <head slot="head">
-    <meta name="description" content="Premium Discord server management, custom bots, and security audits crafted to perfection. Join 500+ thriving communities." />
-    <meta name="keywords" content="Discord Services, Custom Bots, Discord Security, Server Management, Fushiguro" />
-    
-    <!-- OpenGraph / Facebook / Instagram -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fushiguro-service.vercel.app/" />
-    <meta property="og:title" content="Fushiguro - Premium Discord Services & products" />
-    <meta property="og:description" content=" Professional Discord solutions for your community and legit products to use via licence" />
-    <meta property="og:image" content="/images/og-image.png" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Fushiguro - Premium Discord Services" />
-    <meta property="twitter:description" content="Crafting the most premium Discord experiences." />
   </head>
 
   <Navbar client:load />
@@ -238,10 +224,16 @@ import FAQ from '../components/FAQ.tsx';
 </script>
 
 <!-- Google Analytics Placeholder (Add your GA ID here) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWXCV0W4WM"></script>
 <script>
-  //  window.dataLayer = window.dataLayer || [];
-  //  function gtag(){dataLayer.push(arguments);}
-  //  gtag('js', new Date());
-  //  gtag('config', 'G-XXXXXXXXXX');
+  declare global {
+    interface Window {
+      dataLayer: any[];
+    }
+  }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: any[]){window.dataLayer.push(args);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWXCV0W4WM');
 </script>
