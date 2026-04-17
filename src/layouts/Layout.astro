@@ -9,6 +9,48 @@ const description = "Premium Discord services & AI products. Custom bots, server
 const keywords = "Discord services, custom Discord bots, server management, Discord moderation, Discord token grabber, Discord security, community management, image logger, discord server free boost"; //
 const author = "Fushiguro";
 const image = "/images/og-image.png";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fushiguro",
+  "description": description,
+  "url": baseURL,
+  "logo": `${baseURL}/favicon.png`,
+  "image": `${baseURL}${image}`,
+  "sameAs": [
+    "https://discord.com/users/1493102481318871121",
+    "https://instagram.com/__hey__its.zoya__"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "areaServed": "Worldwide",
+    "availableLanguage": "en"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": baseURL },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": `${baseURL}/#services` },
+    { "@type": "ListItem", "position": 3, "name": "Products", "item": `${baseURL}/#products` },
+    { "@type": "ListItem", "position": 4, "name": "Contact", "item": `${baseURL}/#contact` }
+  ]
+};
+
+const ratingSchema = {
+  "@context": "https://schema.org/",
+  "@type": "AggregateRating",
+  "name": "Fushiguro Discord Services",
+  "bestRating": "5", "worstRating": "1", "ratingValue": "4.9", "ratingCount": "500"
+};
 ---
 
 <!doctype html>
@@ -64,76 +106,9 @@ const image = "/images/og-image.png";
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&family=Satisfy&display=swap" rel="stylesheet" />
     
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Fushiguro",
-        "description": {description},
-        "url": {baseURL},
-        "logo": {baseURL} + "/img/favicon.png",
-        "image": {baseURL} + "/og-image.png",
-        "sameAs": [
-          "https://discord.com/users/1493102481318871121",
-          "https://instagram.com/__hey__its.zoya__"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Support",
-          "areaServed": "Worldwide",
-          "availableLanguage": "en"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "US"
-        }
-      }
-    </script>
-    
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": {baseURL}
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": {baseURL} + "/#services"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Products",
-            "item": {baseURL} + "/#products"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Contact",
-            "item": {baseURL} + "/#contact"
-          }
-        ]
-      }
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org/",
-        "@type": "AggregateRating",
-        "name": "Fushiguro Discord Services",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingValue": "4.9",
-        "ratingCount": "500"
-      }
-    </script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(ratingSchema)} />
   </head>
   <body class="bg-gradient-to-br from-white via-pink-50 to-purple-50 font-poppins">
     <slot />
